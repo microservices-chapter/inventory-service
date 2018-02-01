@@ -11,7 +11,6 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'checkstyle'
 apply plugin: 'org.springframework.boot'
 
 dependencyManagement {
