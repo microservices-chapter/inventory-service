@@ -1,3 +1,4 @@
 script:
   - ./gradlew assemble
-  - ./gradlew check
+  - ./gradlew check --continue
+  - cat ./build/reports/checkstyle/main.html
