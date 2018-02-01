@@ -1,3 +1,10 @@
-script:
-  - ls
-  - ./gradlew test
+stages:
+  - build
+  - test
+
+jobs:
+  include:
+    - stage: build
+      script: ./gradlew assemble
+    - stage: test
+      script: ./gradlew test
