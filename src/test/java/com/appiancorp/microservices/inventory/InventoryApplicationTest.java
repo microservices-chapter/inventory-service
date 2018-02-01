@@ -14,6 +14,6 @@ public class InventoryApplicationTest {
   public void testList() {
     InventoryApplication inventoryApplication = new InventoryApplication();
     List<Product> list = inventoryApplication.list();
-    Assert.assertThat(list.size(), CoreMatchers.equalTo(2));
+    Assert.assertThat(list.size(), CoreMatchers.equalTo(1));
   }
 }
