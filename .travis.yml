@@ -9,4 +9,7 @@ jobs:
     - stage: test
       script: ./gradlew test
     - stage: test
-      script: ./gradlew checkstyleMain checkstyleTest
+      script:
+        - ./gradlew check --continue
+        - cat ./build/reports/checkstyle/main.html
+
