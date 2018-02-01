@@ -8,3 +8,5 @@ jobs:
       script: ./gradlew assemble
     - stage: test
       script: ./gradlew test
+    - stage: test
+      script: ./gradlew checkstyleMain checkstyleTest
