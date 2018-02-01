@@ -1,4 +1,4 @@
-group 'shopping-app'
+group 'inventory-service'
 version '1.0-SNAPSHOT'
 
 buildscript {
