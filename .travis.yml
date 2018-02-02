@@ -1,3 +1,2 @@
 script:
-  - ./gradlew assemble
-  - ./gradlew test
+  - ./gradlew check
