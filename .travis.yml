@@ -1,2 +1,12 @@
-script:
-  - ./gradlew check
+stages:
+  - build
+  - test
+
+jobs:
+  include:
+    - stage: build
+      script: ./gradlew assemble
+    - stage: test
+      script: ./gradlew checkstyleMain checkstyleTest
+    - stage: test
+      script: ./gradlew test
