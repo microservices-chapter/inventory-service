@@ -7,13 +7,13 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.appian.microservices.inventory.InventoryApplication;
-import com.appian.microservices.inventory.Product;
+import com.appian.microservices.inventory.model.Inventory;
 
 public class InventoryApplicationTest {
   @Test
   public void testList() {
     InventoryApplication inventoryApplication = new InventoryApplication();
-    List<Product> list = inventoryApplication.list();
+    List<Inventory> list = inventoryApplication.listAll();
     Assert.assertThat(list.size(), CoreMatchers.equalTo(2));
   }
 }

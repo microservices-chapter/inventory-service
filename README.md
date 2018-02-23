@@ -9,7 +9,6 @@ The inventory service manages information about the inventory
 
 | METHOD | PATH | Accept | Body | DESCRIPTION |
 | ------ |----- | ------ |----- | ----------- |
-| **GET**    | products |        |      | List all products |
-| **GET**    | products/*{productId}* |        |      | Retrieve a product |
-| **POST**   | products  | application/json | [<br>&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: '123-foo',<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity: 12<br>&nbsp;&nbsp;&nbsp;}<br>] | Add products |
-| **PUT**    | products/*{productId}*  | application/json | {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: '123-foo',<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity: 11<br>&nbsp;} | Update a product |
+| **GET**    | inventory |        |      | List all products |
+| **GET**    | inventory/*{productId}* |        |      | Retrieve a product |
+| **POST**   | inventory  | application/json | [<br>&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: '123-foo',<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quantity: 12<br>&nbsp;&nbsp;&nbsp;}<br>] | Update a list of products |
