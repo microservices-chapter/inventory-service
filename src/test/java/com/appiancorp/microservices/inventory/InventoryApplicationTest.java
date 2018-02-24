@@ -13,7 +13,7 @@ public class InventoryApplicationTest {
   @Test
   public void testList() {
     InventoryApplication inventoryApplication = new InventoryApplication();
-    List<Inventory> list = inventoryApplication.getAll();
+    List<Inventory> list = inventoryApplication.list();
     Assert.assertThat(list.size(), CoreMatchers.equalTo(2));
   }
 }
