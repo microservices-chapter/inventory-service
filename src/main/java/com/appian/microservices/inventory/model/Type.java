@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public enum Type {
 
-  INCREASE, REDUCE;
+  INCREASE, DECREASE;
 
   @JsonCreator
   public static Type fromText(String text){

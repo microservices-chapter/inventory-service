@@ -15,6 +15,7 @@ public class InventoryService {
 
   // docker run --name mongodb -p 27017:27017 mongo
   // docker start mongodb
+  // curl -H "Content-Type: application/json" -X POST -d '{"id":"10","quantity":"10", "type":"increase"}' -X PUT localhost:8080/products
   // show dbs
   // show collections
   // db.test_table.find( {} )
@@ -41,7 +42,7 @@ public class InventoryService {
 
     int qty;
     switch (updateRequest.getType()) {
-      case REDUCE:
+      case DECREASE:
         qty = inventory.getQuantity() - updateRequest.getQuantity();
         if (qty < 0) {
           throw new RuntimeException("invalid quantity");
