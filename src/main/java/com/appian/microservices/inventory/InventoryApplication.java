@@ -31,23 +31,23 @@ public class InventoryApplication {
 
   // TODO: handle errors and exceptions
 
-  @RequestMapping(value = "/inventory")
+  @RequestMapping(value = "/product")
   public @ResponseBody List<Inventory> list() {
     return inventoryService.list();
   }
 
-  @RequestMapping(value = "/inventory/{productId}")
+  @RequestMapping(value = "/product/{productId}")
   public @ResponseBody Inventory getInventory(@PathVariable String productId) {
     return inventoryService.get(productId);
   }
 
-  @RequestMapping(method = RequestMethod.PUT, value = "/inventory", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @RequestMapping(method = RequestMethod.PUT, value = "/product", consumes = MediaType.APPLICATION_JSON_VALUE)
   public @ResponseBody Inventory update(@RequestBody
       UpdateRequest updateRequest) {
     return inventoryService.update(updateRequest);
   }
 
-  @RequestMapping(method = RequestMethod.DELETE, value = "/inventory", consumes = MediaType.APPLICATION_JSON_VALUE)
+  @RequestMapping(method = RequestMethod.DELETE, value = "/product", consumes = MediaType.APPLICATION_JSON_VALUE)
   public @ResponseBody DeleteRequest delete(@RequestBody
       DeleteRequest deleteRequest) {
     return inventoryService.delete(deleteRequest);
