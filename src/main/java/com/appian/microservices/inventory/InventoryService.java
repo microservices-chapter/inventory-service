@@ -14,6 +14,7 @@ import com.appian.microservices.inventory.repository.InventoryRepository;
 public class InventoryService {
 
   // docker run --name mongodb -p 27017:27017 mongo
+  // docker start mongodb
   // show dbs
   // show collections
   // db.test_table.find( {} )

@@ -53,6 +53,11 @@ public class InventoryApplication {
     return inventoryService.delete(deleteRequest);
   }
 
+  @RequestMapping(value = "/status")
+  public @ResponseBody String health() {
+    return "UP";
+  }
+
   public static void main(String[] args) {
     SpringApplication.run(InventoryApplication.class, args);
   }
