@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.appian.microservices.inventory.model.DeleteRequest;
 import com.appian.microservices.inventory.model.Inventory;
 import com.appian.microservices.inventory.model.UpdateRequest;
 import com.appian.microservices.inventory.repository.InventoryRepository;
@@ -54,5 +55,10 @@ public class InventoryService {
 
     inventory.setQuantity(qty);
     return repository.save(inventory);
+  }
+
+  DeleteRequest delete(DeleteRequest deleteRequest) {
+    repository.delete(deleteRequest.getId());
+    return deleteRequest;
   }
 }

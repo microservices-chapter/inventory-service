@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.appian.microservices.inventory.model.DeleteRequest;
 import com.appian.microservices.inventory.model.Inventory;
 import com.appian.microservices.inventory.model.UpdateRequest;
 
@@ -47,9 +48,9 @@ public class InventoryApplication {
   }
 
   @RequestMapping(method = RequestMethod.DELETE, value = "/inventory", consumes = MediaType.APPLICATION_JSON_VALUE)
-  public @ResponseBody Inventory delete(@RequestBody
-      UpdateRequest updateRequest) {
-    return inventoryService.update(updateRequest);
+  public @ResponseBody DeleteRequest delete(@RequestBody
+      DeleteRequest deleteRequest) {
+    return inventoryService.delete(deleteRequest);
   }
 
   public static void main(String[] args) {

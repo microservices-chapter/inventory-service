@@ -6,6 +6,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection="inventory")
 public class Inventory {
 
+  // TODO: add UTC timestamp
+
   @Id
   private String id;
   private int quantity;
