@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.appian.microservices.inventory.model.DeleteRequest;
-import com.appian.microservices.inventory.model.Inventory;
-import com.appian.microservices.inventory.model.UpdateRequest;
+import com.appian.microservices.inventory.model.Delete;
+import com.appian.microservices.inventory.model.Update;
+import com.appian.microservices.inventory.repository.Inventory;
 
 /**
  * Inventory application.
@@ -36,21 +36,20 @@ public class InventoryApplication {
     return inventoryService.list();
   }
 
-  @RequestMapping(value = "/products/{productId}")
-  public @ResponseBody Inventory getInventory(@PathVariable String productId) {
-    return inventoryService.get(productId);
+  @RequestMapping(value = "/products/{sku}")
+  public @ResponseBody Inventory getInventory(@PathVariable String sku) {
+    return inventoryService.get(sku);
   }
 
   @RequestMapping(method = RequestMethod.PUT, value = "/products", consumes = MediaType.APPLICATION_JSON_VALUE)
-  public @ResponseBody Inventory update(@RequestBody
-      UpdateRequest updateRequest) {
-    return inventoryService.update(updateRequest);
+  public @ResponseBody Inventory update(@RequestBody Update update) {
+    return inventoryService.update(update);
   }
 
   @RequestMapping(method = RequestMethod.DELETE, value = "/products", consumes = MediaType.APPLICATION_JSON_VALUE)
-  public @ResponseBody DeleteRequest delete(@RequestBody
-      DeleteRequest deleteRequest) {
-    return inventoryService.delete(deleteRequest);
+  public @ResponseBody
+  Delete delete(@RequestBody Delete delete) {
+    return inventoryService.delete(delete);
   }
 
   @RequestMapping(value = "/status")

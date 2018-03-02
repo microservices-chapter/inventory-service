@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.appian.microservices.inventory.model.DeleteRequest;
-import com.appian.microservices.inventory.model.Inventory;
-import com.appian.microservices.inventory.model.UpdateRequest;
+import com.appian.microservices.inventory.model.Delete;
+import com.appian.microservices.inventory.model.Update;
+import com.appian.microservices.inventory.repository.Inventory;
 import com.appian.microservices.inventory.repository.InventoryRepository;
 
 @Service
@@ -28,39 +28,39 @@ public class InventoryService {
     return repository.findAll();
   }
 
-  Inventory get(String productId) {
-    return repository.findOne(productId);
+  Inventory get(String sku) {
+    return repository.findOne(sku);
   }
 
-  Inventory update(UpdateRequest updateRequest) {
-    Inventory inventory = repository.findOne(updateRequest.getId());
+  Inventory update(Update update) {
+    Inventory inventory = repository.findOne(update.getSku());
     if (inventory == null) {
       // new product
       inventory = new Inventory();
-      inventory.setId(updateRequest.getId());
+      inventory.setSku(update.getSku());
     }
 
     int qty;
-    switch (updateRequest.getType()) {
+    switch (update.getType()) {
       case DECREASE:
-        qty = inventory.getQuantity() - updateRequest.getQuantity();
+        qty = inventory.getQuantity() - update.getQuantity();
         if (qty < 0) {
-          throw new RuntimeException("invalid quantity");
+          throw new RuntimeException("invalid quantity: " + update.getQuantity());
         }
         break;
       case INCREASE:
-        qty = inventory.getQuantity() + updateRequest.getQuantity();
+        qty = inventory.getQuantity() + update.getQuantity();
         break;
       default:
-        throw new RuntimeException("Unsupported updateRequest type: " + updateRequest.getType());
+        throw new RuntimeException("Unsupported update type: " + update.getType());
     }
 
     inventory.setQuantity(qty);
     return repository.save(inventory);
   }
 
-  DeleteRequest delete(DeleteRequest deleteRequest) {
-    repository.delete(deleteRequest.getId());
-    return deleteRequest;
+  Delete delete(Delete delete) {
+    repository.delete(delete.getSku());
+    return delete;
   }
 }

@@ -1,22 +1,22 @@
 package com.appian.microservices.inventory.model;
 
-public class UpdateRequest {
+public class Update {
 
-  private String id;
+  private String sku;
   private int quantity;
   private Type type;
 
-  public UpdateRequest() {
+  public Update() {
   }
 
-  public UpdateRequest(String id, int quantity, Type type) {
-    this.id = id;
+  public Update(String sku, int quantity, Type type) {
+    this.sku = sku;
     this.quantity = quantity;
     this.type = type;
   }
 
-  public String getId() {
-    return id;
+  public String getSku() {
+    return sku;
   }
 
   public int getQuantity() {
