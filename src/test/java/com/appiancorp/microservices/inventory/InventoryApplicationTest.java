@@ -8,7 +8,7 @@ public class InventoryApplicationTest {
   @Test
   public void testList() {
     InventoryApplication inventoryApplication = new InventoryApplication();
-//    List<Inventory> list = inventoryApplication.list();
+//    List<Inventory> getInventory = inventoryApplication.getInventory();
 //    Assert.assertThat(list.size(), CoreMatchers.equalTo(2));
   }
 }

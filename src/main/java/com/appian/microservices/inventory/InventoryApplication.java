@@ -31,9 +31,14 @@ public class InventoryApplication {
 
   // TODO: error handling
 
+  @RequestMapping(value = "/report")
+  public @ResponseBody List<Inventory> report() {
+    return inventoryService.list();
+  }
+
   @RequestMapping(value = "/products")
   public @ResponseBody List<Inventory> list() {
-    return inventoryService.list();
+    return inventoryService.getInventory();
   }
 
   @RequestMapping(value = "/products/{sku}")
@@ -48,7 +53,7 @@ public class InventoryApplication {
 
   @RequestMapping(method = RequestMethod.DELETE, value = "/products", consumes = MediaType.APPLICATION_JSON_VALUE)
   public @ResponseBody
-  Delete delete(@RequestBody Delete delete) {
+  Inventory delete(@RequestBody Delete delete) {
     return inventoryService.delete(delete);
   }
 

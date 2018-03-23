@@ -7,6 +7,6 @@ spring:
       fail-fast: true
       password: foo
       username: user
-#  data:
-#    mongodb:
-#      uri: mongodb://localhost:27017/inventory
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/inventory
