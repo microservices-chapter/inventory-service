@@ -34,10 +34,11 @@ public class InventoryService {
   @Autowired
   private InventoryRepository repository;
 
-  Logger logger = LoggerFactory.getLogger(this.getClass());
+  private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   public List<Inventory> list() {
-    // report
+    // for reports
+    logger.debug("Retrieving all products changes");
     return repository.findAll();
   }
 
@@ -68,16 +69,23 @@ public class InventoryService {
     int qty;
     switch (update.getType()) {
       case DECREASE:
-          qty = inventory.getQuantity() - update.getQuantity();
-          if (qty < 0) {
-            throw new RuntimeException("invalid quantity: " + update.getQuantity());
-          }
-          break;
+        logger.info("Decreasing sku {} by {}", update.getSku(), update.getQuantity());
+
+        qty = inventory.getQuantity() - update.getQuantity();
+        if (qty < 0) {
+          logger.error("Cannot decrease sku {} by {} since there are only {} items",
+              update.getSku(), update.getQuantity(), inventory.getQuantity());
+          throw new RuntimeException("invalid quantity: " + update.getQuantity());
+        }
+        break;
       case INCREASE:
-          qty = inventory.getQuantity() + update.getQuantity();
-          break;
+        logger.info("Increasing sku {} by {}", update.getSku(), update.getQuantity());
+
+        qty = inventory.getQuantity() + update.getQuantity();
+        break;
       default:
-          throw new RuntimeException("Unsupported update type: " + update.getType());
+        logger.info("Unsupported update type: {}", update.getType());
+        throw new RuntimeException("Unsupported update type: " + update.getType());
     }
 
     inventory.setQuantity(qty);
@@ -86,6 +94,8 @@ public class InventoryService {
 
   @Transactional
   public Inventory delete(Delete delete) {
+    logger.info("Deleting sku {}", delete.getSku());
+
     Inventory inventory = newInventoryEntry(delete.getSku());
     inventory.setStatus(INACTIVE);
     return repository.save(inventory);

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.appian.microservices.inventory.model.Delete;
 import com.appian.microservices.inventory.model.Update;
@@ -24,10 +26,13 @@ import com.appian.microservices.inventory.repository.Inventory;
  */
 @SpringBootApplication
 @RestController
-public class InventoryApplication {
+public class InventoryApplication extends WebMvcConfigurerAdapter {
 
   @Autowired
   private InventoryService inventoryService;
+
+  @Autowired
+  private CorrelationIdFilter correlationIdFilter;
 
   // TODO: error handling
 
@@ -61,6 +66,12 @@ public class InventoryApplication {
   public @ResponseBody String health() {
     return "UP";
   }
+
+  @Override
+  public void addInterceptors(InterceptorRegistry registry) {
+    registry.addInterceptor(correlationIdFilter);
+  }
+
 
   public static void main(String[] args) {
     SpringApplication.run(InventoryApplication.class, args);
