@@ -84,7 +84,7 @@ public class InventoryService {
         qty = inventory.getQuantity() + update.getQuantity();
         break;
       default:
-        logger.info("Unsupported update type: {}", update.getType());
+        logger.error("Unsupported update type: {}", update.getType());
         throw new RuntimeException("Unsupported update type: " + update.getType());
     }
 

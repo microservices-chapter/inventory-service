@@ -3,6 +3,8 @@ spring:
     name: inventory-service
   cloud:
     config:
+      # In Dev, pass -Dspring.cloud.config.enabled=false as VM option (e.g in IDE) to disable config server
+      enabled: true
       uri: http://config-server:8888
       fail-fast: true
       password: foo
