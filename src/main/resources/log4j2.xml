@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN" monitorInterval="30">
-  <!--TODO: to yaml; and move to config repo-->
   <Properties>
     <Property name="logPattern">
       %d{yyyy-MM-dd HH:mm:ss.SSS} InventoryService %5p [%X{CORRELATION-ID}] %-30.30c{1.} : %m%n%ex

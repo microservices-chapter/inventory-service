@@ -64,3 +64,4 @@ classes/
 **/build/
 **/bin/
 bin/
+out/

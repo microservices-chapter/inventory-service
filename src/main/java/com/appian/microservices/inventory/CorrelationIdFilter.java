@@ -18,8 +18,7 @@ public class CorrelationIdFilter extends HandlerInterceptorAdapter {
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   @Override
-  public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object)
-      throws Exception {
+  public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) {
     String correlationId = "";
     if (request.getHeader(CORRELATION_ID) != null) {
       correlationId = request.getHeader(CORRELATION_ID);
@@ -31,7 +30,7 @@ public class CorrelationIdFilter extends HandlerInterceptorAdapter {
 
   @Override
   public void postHandle(HttpServletRequest request, HttpServletResponse response, Object object,
-      ModelAndView model) throws Exception {
+      ModelAndView model) {
     ThreadContext.remove(CORRELATION_ID);
   }
 }
