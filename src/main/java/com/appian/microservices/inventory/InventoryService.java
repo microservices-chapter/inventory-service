@@ -102,7 +102,7 @@ public class InventoryService {
   }
 
   private Inventory newInventoryEntry(String sku) {
-    Inventory previous = repository.findBySku(sku);
+    Inventory previous = repository.findTopBySkuOrderByTimestampDesc(sku);
     Inventory inventory = new Inventory();
     inventory.setSku(sku);
     if (previous != null) {
