@@ -3,7 +3,7 @@ spring:
     name: inventory-service
   cloud:
     config:
-      # In Dev, pass -Dspring.cloud.config.enabled=false as VM option (e.g in IDE) to disable config server
+      # In Dev, pass -Dspring.cloud.config.enabled=false as a VM option (e.g in IDE) to disable config server
       enabled: true
       uri: http://config-server:8888
       fail-fast: true
@@ -11,4 +11,4 @@ spring:
       username: user
   data:
     mongodb:
-      uri: mongodb://localhost:27017/inventory
+      uri: mongodb://inventory-mongodb:27017/inventory

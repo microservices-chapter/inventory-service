@@ -59,7 +59,12 @@ public class InventoryService {
 
   public Inventory get(String sku) {
     logger.debug("Retrieving sku: {}", sku);
-    return repository.findTopBySkuOrderByTimestampDesc(sku);
+    Inventory inventory = repository.findTopBySkuOrderByTimestampDesc(sku);
+    if (inventory == null) {
+      logger.error("Invalid sku: {}", sku);
+      throw new RuntimeException("Invalid sku: " + sku);
+    }
+    return inventory;
   }
 
   @Transactional

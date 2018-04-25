@@ -22,7 +22,7 @@ public class CorrelationIdFilter extends HandlerInterceptorAdapter {
     String correlationId = "";
     if (request.getHeader(CORRELATION_ID) != null) {
       correlationId = request.getHeader(CORRELATION_ID);
-      logger.debug("Found correlationId {} on thread {}");
+      logger.debug("Found correlationId {} on thread {}", correlationId, Thread.currentThread().getId());
     }
     ThreadContext.put(CORRELATION_ID, correlationId);
     return true;
